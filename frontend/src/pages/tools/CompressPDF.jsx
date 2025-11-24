@@ -66,55 +66,62 @@ const CompressPDF = () => {
     };
 
     return (
-        <Box
-            className="min-h-screen page-transition"
-            sx={{
-                py: 6,
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            }}
-        >
+        <Box className="cyber-grid" sx={{ minHeight: '100vh', py: 8 }}>
             <Container maxWidth="md">
                 <Paper
-                    className="p-8 scale-in"
+                    className="glass-panel scale-in"
                     elevation={0}
                     sx={{
-                        borderRadius: 5,
-                        background: 'rgba(255, 255, 255, 0.95)',
-                        backdropFilter: 'blur(20px)',
-                        boxShadow: '0 20px 60px rgba(31, 38, 135, 0.3)',
+                        p: 6,
+                        borderRadius: '24px',
+                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                        backdropFilter: 'blur(20px) saturate(180%)',
+                        border: '1px solid rgba(0, 240, 255, 0.2)',
+                        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 240, 255, 0.1)',
                     }}
                 >
+                    {/* Header */}
                     <Box className="text-center mb-6">
                         <Box
                             sx={{
-                                width: 80,
-                                height: 80,
-                                borderRadius: 4,
+                                width: 100,
+                                height: 100,
+                                borderRadius: '20px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                margin: '0 auto 1.5rem',
-                                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                                boxShadow: '0 8px 24px rgba(102, 126, 234, 0.4)',
-                                fontSize: '2.5rem',
+                                margin: '0 auto 2rem',
+                                background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(184, 41, 255, 0.2))',
+                                border: '2px solid rgba(0, 240, 255, 0.3)',
+                                fontSize: '3rem',
+                                position: 'relative',
+                                '&::before': {
+                                    content: '""',
+                                    position: 'absolute',
+                                    inset: '-6px',
+                                    background: 'linear-gradient(45deg, #00f0ff, #b829ff)',
+                                    borderRadius: '22px',
+                                    opacity: 0.4,
+                                    zIndex: -1,
+                                    filter: 'blur(15px)',
+                                },
                             }}
                         >
                             🗜️
                         </Box>
                         <Typography
                             variant="h4"
-                            className="font-bold mb-2"
+                            className="text-gradient mb-2"
                             sx={{
+                                fontFamily: '"Orbitron", sans-serif',
                                 fontWeight: 800,
-                                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
+                                letterSpacing: '2px',
                             }}
                         >
-                            Compress PDF
+                            COMPRESS PDF
                         </Typography>
-                        <Typography variant="body1" color="text.secondary">
-                            Reduce PDF file size while maintaining quality
+                        <Typography variant="body1" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                            Reduce file size while maintaining quality
                         </Typography>
                     </Box>
 
@@ -125,108 +132,102 @@ const CompressPDF = () => {
                     />
 
                     {file && (
-                        <Box className="mt-6 fade-in">
+                        <Box className="mt-6 fade-in-up">
+                            {/* File Chip */}
                             <Chip
                                 label={`${file.name} • ${(file.size / 1024 / 1024).toFixed(2)} MB`}
                                 onDelete={() => setFile(null)}
                                 sx={{
-                                    mb: 3,
-                                    px: 2,
-                                    py: 3,
+                                    mb: 4,
+                                    px: 3,
+                                    py: 3.5,
                                     fontSize: '0.95rem',
-                                    fontWeight: 500,
-                                    background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)',
-                                    border: '1px solid rgba(102, 126, 234, 0.2)',
+                                    fontWeight: 600,
+                                    background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(184, 41, 255, 0.1))',
+                                    border: '1px solid rgba(0, 240, 255, 0.3)',
+                                    color: '#fff',
+                                    fontFamily: '"Orbitron", sans-serif',
                                     '& .MuiChip-deleteIcon': {
-                                        color: '#667eea',
+                                        color: '#00f0ff',
+                                        '&:hover': {
+                                            color: '#ff006e',
+                                        },
                                     },
                                 }}
                             />
 
+                            {/* Quality Selector */}
                             <FormControl fullWidth className="mb-4">
-                                <InputLabel>Compression Quality</InputLabel>
+                                <InputLabel sx={{ color: 'rgba(255, 255, 255, 0.7)', fontFamily: '"Orbitron", sans-serif' }}>
+                                    COMPRESSION QUALITY
+                                </InputLabel>
                                 <Select
                                     value={resolution}
-                                    label="Compression Quality"
+                                    label="COMPRESSION QUALITY"
                                     onChange={(e) => setResolution(e.target.value)}
                                     sx={{
-                                        borderRadius: 3,
+                                        borderRadius: '12px',
+                                        background: 'rgba(255, 255, 255, 0.03)',
+                                        border: '1px solid rgba(0, 240, 255, 0.2)',
+                                        color: '#fff',
+                                        fontFamily: '"Orbitron", sans-serif',
+                                        '& .MuiOutlinedInput-notchedOutline': {
+                                            border: 'none',
+                                        },
                                         '&:hover': {
-                                            boxShadow: '0 4px 12px rgba(102, 126, 234, 0.15)',
+                                            borderColor: '#00f0ff',
+                                            boxShadow: '0 0 20px rgba(0, 240, 255, 0.2)',
                                         },
                                     }}
                                 >
-                                    <MenuItem value="screen">
-                                        <Box>
-                                            <Typography variant="body1" fontWeight={600}>Screen (72 DPI)</Typography>
-                                            <Typography variant="caption" color="text.secondary">Smallest size • Best for viewing</Typography>
-                                        </Box>
-                                    </MenuItem>
-                                    <MenuItem value="ebook">
-                                        <Box>
-                                            <Typography variant="body1" fontWeight={600}>eBook (150 DPI)</Typography>
-                                            <Typography variant="caption" color="text.secondary">Recommended • Balanced quality</Typography>
-                                        </Box>
-                                    </MenuItem>
-                                    <MenuItem value="printer">
-                                        <Box>
-                                            <Typography variant="body1" fontWeight={600}>Printer (300 DPI)</Typography>
-                                            <Typography variant="caption" color="text.secondary">High quality • For printing</Typography>
-                                        </Box>
-                                    </MenuItem>
-                                    <MenuItem value="prepress">
-                                        <Box>
-                                            <Typography variant="body1" fontWeight={600}>Prepress (300 DPI)</Typography>
-                                            <Typography variant="caption" color="text.secondary">Best quality • Largest size</Typography>
-                                        </Box>
-                                    </MenuItem>
+                                    <MenuItem value="screen">SCREEN (72 DPI) - Smallest</MenuItem>
+                                    <MenuItem value="ebook">EBOOK (150 DPI) - Recommended</MenuItem>
+                                    <MenuItem value="printer">PRINTER (300 DPI) - High Quality</MenuItem>
+                                    <MenuItem value="prepress">PREPRESS (300 DPI) - Best Quality</MenuItem>
                                 </Select>
                             </FormControl>
 
+                            {/* Progress Bar */}
                             {loading && (
                                 <Box className="mb-4">
-                                    <LinearProgress
+                                    <Box className="progress-bar">
+                                        <Box
+                                            className="progress-fill"
+                                            sx={{ width: '100%' }}
+                                        />
+                                    </Box>
+                                    <Typography
+                                        variant="caption"
                                         sx={{
-                                            height: 8,
-                                            borderRadius: 4,
-                                            background: 'rgba(102, 126, 234, 0.1)',
-                                            '& .MuiLinearProgress-bar': {
-                                                background: 'linear-gradient(90deg, #667eea 0%, #764ba2 100%)',
-                                                borderRadius: 4,
-                                            },
+                                            color: '#00f0ff',
+                                            fontFamily: '"Orbitron", sans-serif',
+                                            display: 'block',
+                                            textAlign: 'center',
+                                            mt: 2,
+                                            letterSpacing: '1px',
                                         }}
-                                    />
-                                    <Typography variant="caption" color="text.secondary" className="mt-2 block text-center">
-                                        Compressing your PDF...
+                                    >
+                                        COMPRESSING PDF...
                                     </Typography>
                                 </Box>
                             )}
 
+                            {/* Action Button */}
                             <Button
-                                variant="contained"
-                                size="large"
                                 fullWidth
                                 onClick={handleCompress}
                                 disabled={loading}
-                                startIcon={loading ? <CircularProgress size={20} color="inherit" /> : <Download />}
+                                className="btn-futuristic ripple"
+                                startIcon={loading ? <CircularProgress size={20} sx={{ color: '#0a0e27' }} /> : <Download />}
                                 sx={{
-                                    py: 1.5,
-                                    fontSize: '1.1rem',
-                                    fontWeight: 600,
-                                    borderRadius: 3,
-                                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                                    boxShadow: '0 8px 24px rgba(102, 126, 234, 0.4)',
-                                    '&:hover': {
-                                        background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)',
-                                        boxShadow: '0 12px 32px rgba(102, 126, 234, 0.5)',
-                                        transform: 'translateY(-2px)',
-                                    },
-                                    '&:disabled': {
-                                        background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.5) 0%, rgba(118, 75, 162, 0.5) 100%)',
-                                    },
+                                    py: 2,
+                                    fontSize: '1rem',
+                                    fontFamily: '"Orbitron", sans-serif',
+                                    fontWeight: 700,
+                                    letterSpacing: '2px',
                                 }}
                             >
-                                {loading ? 'Compressing...' : 'Compress PDF'}
+                                {loading ? 'PROCESSING...' : 'COMPRESS PDF'}
                             </Button>
                         </Box>
                     )}

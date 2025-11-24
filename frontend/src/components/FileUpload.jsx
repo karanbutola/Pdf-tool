@@ -19,108 +19,151 @@ const FileUpload = ({ onFilesSelected, accept, multiple = false, maxSize = 50 * 
         <Paper
             {...getRootProps()}
             elevation={0}
-            className="scale-in"
+            className={`upload-zone scale-in ${isDragActive ? 'active' : ''}`}
             sx={{
-                p: 6,
-                border: '2px dashed',
-                borderColor: isDragActive ? '#667eea' : 'rgba(102, 126, 234, 0.3)',
-                borderRadius: 5,
-                cursor: 'pointer',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                position: 'relative',
                 background: isDragActive
-                    ? 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)'
-                    : 'rgba(255, 255, 255, 0.5)',
+                    ? 'linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(184, 41, 255, 0.1) 100%)'
+                    : 'linear-gradient(135deg, rgba(0, 240, 255, 0.05) 0%, rgba(184, 41, 255, 0.05) 100%)',
+                border: `2px dashed ${isDragActive ? '#00f0ff' : 'rgba(0, 240, 255, 0.3)'}`,
+                borderRadius: '20px',
+                padding: '60px 40px',
+                cursor: 'pointer',
+                transition: 'all 0.4s ease',
                 backdropFilter: 'blur(10px)',
+                '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    inset: '-2px',
+                    background: 'linear-gradient(45deg, #00f0ff, #b829ff)',
+                    borderRadius: '20px',
+                    opacity: isDragActive ? 0.3 : 0,
+                    zIndex: -1,
+                    transition: 'opacity 0.3s',
+                },
                 '&:hover': {
-                    borderColor: '#667eea',
-                    background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%)',
-                    transform: 'translateY(-4px)',
-                    boxShadow: '0 12px 40px rgba(102, 126, 234, 0.2)',
+                    borderColor: '#00f0ff',
+                    background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(184, 41, 255, 0.1) 100%)',
+                    boxShadow: '0 0 40px rgba(0, 240, 255, 0.2)',
                 },
             }}
         >
             <input {...getInputProps()} />
             <Box className="text-center">
+                {/* Upload Icon */}
                 <Box
                     className={isDragActive ? 'float' : ''}
                     sx={{
-                        width: 80,
-                        height: 80,
-                        borderRadius: 4,
+                        width: 100,
+                        height: 100,
+                        borderRadius: '20px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '0 auto 1.5rem',
-                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                        boxShadow: '0 8px 24px rgba(102, 126, 234, 0.4)',
+                        margin: '0 auto 2rem',
+                        background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(184, 41, 255, 0.2))',
+                        border: '2px solid rgba(0, 240, 255, 0.3)',
+                        position: 'relative',
                         transition: 'all 0.3s ease',
+                        '&::before': {
+                            content: '""',
+                            position: 'absolute',
+                            inset: '-6px',
+                            background: 'linear-gradient(45deg, #00f0ff, #b829ff)',
+                            borderRadius: '22px',
+                            opacity: isDragActive ? 0.5 : 0,
+                            zIndex: -1,
+                            filter: 'blur(15px)',
+                            transition: 'opacity 0.3s',
+                        },
                     }}
                 >
-                    <CloudUpload sx={{ fontSize: 40, color: 'white' }} />
+                    <CloudUpload sx={{ fontSize: 50, color: '#00f0ff' }} />
                 </Box>
 
+                {/* Text Content */}
                 {isDragActive ? (
                     <Typography
-                        variant="h6"
+                        variant="h5"
                         sx={{
-                            color: '#667eea',
-                            fontWeight: 600,
+                            color: '#00f0ff',
+                            fontFamily: '"Orbitron", sans-serif',
+                            fontWeight: 700,
+                            letterSpacing: '2px',
+                            textShadow: '0 0 20px rgba(0, 240, 255, 0.5)',
                         }}
                     >
-                        Drop the files here...
+                        DROP FILES HERE
                     </Typography>
                 ) : (
                     <>
                         <Typography
                             variant="h6"
-                            className="mb-2"
+                            className="mb-3"
                             sx={{
+                                fontFamily: '"Orbitron", sans-serif',
                                 fontWeight: 600,
-                                color: '#1a1a1a',
+                                color: '#fff',
+                                letterSpacing: '1px',
+                                mb: 2,
                             }}
                         >
-                            Drag & drop files here
+                            DRAG & DROP FILES
                         </Typography>
                         <Typography
                             variant="body2"
-                            color="text.secondary"
-                            sx={{ mb: 1 }}
+                            sx={{
+                                color: 'rgba(255, 255, 255, 0.6)',
+                                mb: 3,
+                                fontSize: '0.95rem',
+                            }}
                         >
                             or click to browse
                         </Typography>
+
+                        {/* Info Badge */}
                         <Box
                             sx={{
-                                display: 'inline-block',
-                                px: 3,
-                                py: 1,
-                                borderRadius: 3,
-                                background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: 2,
+                                px: 4,
+                                py: 1.5,
+                                borderRadius: '50px',
+                                background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(184, 41, 255, 0.1))',
+                                border: '1px solid rgba(0, 240, 255, 0.2)',
                                 mt: 2,
                             }}
                         >
                             <Typography
                                 variant="caption"
                                 sx={{
-                                    color: '#667eea',
+                                    color: '#00f0ff',
+                                    fontFamily: '"Orbitron", sans-serif',
                                     fontWeight: 600,
+                                    fontSize: '0.75rem',
+                                    letterSpacing: '1px',
                                 }}
                             >
-                                {multiple ? 'Multiple files supported' : 'Single file only'} • Max {Math.round(maxSize / 1024 / 1024)}MB
+                                {multiple ? 'MULTIPLE FILES' : 'SINGLE FILE'} • MAX {Math.round(maxSize / 1024 / 1024)}MB
                             </Typography>
                         </Box>
                     </>
                 )}
 
+                {/* Error Message */}
                 {fileRejections.length > 0 && (
                     <Typography
                         variant="body2"
-                        className="mt-3"
+                        className="mt-4"
                         sx={{
-                            color: '#f5576c',
-                            fontWeight: 500,
+                            color: '#ff006e',
+                            fontWeight: 600,
+                            fontSize: '0.9rem',
+                            mt: 3,
                         }}
                     >
-                        ⚠️ Some files were rejected. Check file type and size.
+                        ⚠️ FILE REJECTED - CHECK TYPE & SIZE
                     </Typography>
                 )}
             </Box>

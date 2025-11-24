@@ -7,52 +7,107 @@ const Navbar = () => {
             position="sticky"
             elevation={0}
             sx={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(20px)',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
-                boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                background: 'linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(15, 22, 41, 0.95) 100%)',
+                backdropFilter: 'blur(20px) saturate(180%)',
+                borderBottom: '1px solid rgba(0, 240, 255, 0.2)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.37), 0 0 20px rgba(0, 240, 255, 0.1)',
             }}
         >
-            <Toolbar className="container mx-auto">
-                <Box className="flex items-center gap-3 flex-grow">
+            <Toolbar className="container mx-auto py-2">
+                <Box className="flex items-center gap-4 flex-grow">
+                    {/* Logo with Neon Glow */}
                     <Box
-                        className="w-10 h-10 rounded-xl flex items-center justify-center text-2xl"
+                        className="relative"
                         sx={{
-                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                            boxShadow: '0 4px 12px rgba(102, 126, 234, 0.4)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 2,
                         }}
                     >
-                        📄
+                        <Box
+                            sx={{
+                                width: 48,
+                                height: 48,
+                                borderRadius: '12px',
+                                background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(184, 41, 255, 0.2))',
+                                border: '1px solid rgba(0, 240, 255, 0.3)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '1.5rem',
+                                position: 'relative',
+                                '&::before': {
+                                    content: '""',
+                                    position: 'absolute',
+                                    inset: '-4px',
+                                    background: 'linear-gradient(45deg, #00f0ff, #b829ff)',
+                                    borderRadius: '14px',
+                                    opacity: 0.3,
+                                    filter: 'blur(8px)',
+                                    zIndex: -1,
+                                },
+                            }}
+                        >
+                            📄
+                        </Box>
+                        <Typography
+                            variant="h5"
+                            component={Link}
+                            to="/"
+                            sx={{
+                                textDecoration: 'none',
+                                fontFamily: '"Orbitron", sans-serif',
+                                fontWeight: 800,
+                                fontSize: '1.5rem',
+                                letterSpacing: '2px',
+                                background: 'linear-gradient(135deg, #00f0ff 0%, #b829ff 100%)',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                textShadow: '0 0 30px rgba(0, 240, 255, 0.5)',
+                                cursor: 'pointer',
+                                transition: 'all 0.3s ease',
+                                '&:hover': {
+                                    filter: 'brightness(1.2)',
+                                },
+                            }}
+                        >
+                            PDF TOOLKIT
+                        </Typography>
                     </Box>
-                    <Typography
-                        variant="h6"
-                        component={Link}
-                        to="/"
-                        className="font-bold cursor-pointer no-underline"
-                        sx={{
-                            textDecoration: 'none',
-                            color: 'white',
-                            fontWeight: 800,
-                            letterSpacing: '-0.01em',
-                        }}
-                    >
-                        PDF Tool
-                    </Typography>
                 </Box>
 
-                <Box className="flex items-center gap-2">
+                {/* Navigation */}
+                <Box className="flex items-center gap-3">
                     <Button
-                        color="inherit"
                         component={Link}
                         to="/"
                         sx={{
-                            color: 'white',
+                            color: '#fff',
+                            fontFamily: '"Orbitron", sans-serif',
+                            fontWeight: 600,
+                            fontSize: '0.85rem',
+                            letterSpacing: '1px',
+                            padding: '8px 20px',
+                            borderRadius: '10px',
+                            position: 'relative',
+                            overflow: 'hidden',
+                            '&::before': {
+                                content: '""',
+                                position: 'absolute',
+                                inset: 0,
+                                background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(184, 41, 255, 0.1))',
+                                opacity: 0,
+                                transition: 'opacity 0.3s',
+                            },
+                            '&:hover::before': {
+                                opacity: 1,
+                            },
                             '&:hover': {
-                                background: 'rgba(255, 255, 255, 0.1)',
+                                boxShadow: '0 0 20px rgba(0, 240, 255, 0.3)',
                             },
                         }}
                     >
-                        Tools
+                        TOOLS
                     </Button>
                 </Box>
             </Toolbar>

@@ -8,132 +8,140 @@ const Home = () => {
 
     const tools = [
         {
-            title: 'Compress PDF',
-            description: 'Reduce PDF file size while maintaining quality',
+            title: 'Compress',
+            description: 'Reduce file size while maintaining quality with advanced compression',
             icon: '🗜️',
             path: '/tools/compress',
-            color: 'primary',
-            tags: ['compress', 'reduce', 'size', 'optimize']
         },
         {
-            title: 'Merge PDFs',
-            description: 'Combine multiple PDF files into one document',
+            title: 'Merge',
+            description: 'Combine multiple PDFs into a single unified document',
             icon: '🔗',
             path: '/tools/merge',
-            color: 'secondary',
-            tags: ['merge', 'combine', 'join', 'unite']
         },
         {
-            title: 'Image to PDF',
-            description: 'Convert images (JPG, PNG, etc.) to PDF format',
+            title: 'Image → PDF',
+            description: 'Convert images to professional PDF documents instantly',
             icon: '🖼️',
             path: '/tools/image-to-pdf',
-            color: 'success',
-            tags: ['image', 'convert', 'jpg', 'png', 'photo']
         },
         {
-            title: 'PDF to Image',
-            description: 'Extract PDF pages as image files',
+            title: 'PDF → Image',
+            description: 'Extract pages as high-quality image files',
             icon: '📸',
             path: '/tools/pdf-to-image',
-            color: 'warning',
-            tags: ['extract', 'image', 'convert', 'export']
         },
         {
-            title: 'Rotate PDF',
-            description: 'Rotate pages in your PDF document',
+            title: 'Rotate',
+            description: 'Adjust page orientation with precision control',
             icon: '🔄',
             path: '/tools/rotate',
-            color: 'info',
-            tags: ['rotate', 'turn', 'orientation']
         },
         {
-            title: 'Extract Pages',
-            description: 'Extract specific pages from PDF',
+            title: 'Extract',
+            description: 'Pull specific pages from your PDF documents',
             icon: '📄',
             path: '/tools/extract',
-            color: 'error',
-            tags: ['extract', 'pages', 'select', 'remove']
         },
         {
-            title: 'Split PDF',
-            description: 'Split PDF into multiple documents',
+            title: 'Split',
+            description: 'Divide PDFs into multiple separate files',
             icon: '✂️',
             path: '/tools/split',
-            color: 'primary',
-            tags: ['split', 'divide', 'separate']
         },
     ];
 
     const filteredTools = tools.filter(tool =>
         tool.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        tool.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        tool.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+        tool.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
-        <Box className="min-h-screen page-transition" sx={{ py: 6 }}>
+        <Box className="cyber-grid" sx={{ minHeight: '100vh', py: 8 }}>
             <Container maxWidth="lg">
-                <Box className="text-center mb-12 fade-in">
+                {/* Hero Section */}
+                <Box className="text-center mb-12 fade-in-up">
+                    {/* Floating Badge */}
                     <Box
-                        className="inline-block mb-4 px-6 py-2 rounded-full"
+                        className="inline-flex items-center gap-2 px-4 py-2 mb-6"
                         sx={{
-                            background: 'rgba(255, 255, 255, 0.2)',
+                            background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(184, 41, 255, 0.1))',
+                            border: '1px solid rgba(0, 240, 255, 0.3)',
+                            borderRadius: '50px',
                             backdropFilter: 'blur(10px)',
-                            border: '1px solid rgba(255, 255, 255, 0.3)',
                         }}
                     >
+                        <Box
+                            sx={{
+                                width: 8,
+                                height: 8,
+                                borderRadius: '50%',
+                                background: '#00f0ff',
+                                boxShadow: '0 0 10px #00f0ff',
+                                animation: 'pulse 2s ease-in-out infinite',
+                            }}
+                        />
                         <Typography
                             variant="caption"
                             sx={{
-                                color: 'white',
+                                color: '#00f0ff',
+                                fontFamily: '"Orbitron", sans-serif',
                                 fontWeight: 600,
-                                letterSpacing: '0.05em',
-                                textTransform: 'uppercase',
+                                letterSpacing: '2px',
+                                fontSize: '0.75rem',
                             }}
                         >
-                            ✨ All-in-One PDF Solution
+                            PROFESSIONAL PDF POWERHOUSE
                         </Typography>
                     </Box>
 
+                    {/* Main Title */}
                     <Typography
-                        variant="h2"
-                        component="h1"
-                        className="font-bold mb-4"
+                        variant="h1"
+                        className="text-gradient"
                         sx={{
-                            color: 'white',
-                            fontWeight: 800,
-                            fontSize: { xs: '2.5rem', md: '3.5rem' },
-                            letterSpacing: '-0.02em',
-                            textShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
+                            fontFamily: '"Orbitron", sans-serif',
+                            fontWeight: 900,
+                            fontSize: { xs: '2.5rem', md: '4rem' },
+                            letterSpacing: '3px',
+                            mb: 3,
+                            textShadow: '0 0 40px rgba(0, 240, 255, 0.5)',
                         }}
                     >
-                        PDF Tools Made Simple
+                        PDF TOOLKIT
                     </Typography>
 
+                    {/* Subtitle */}
                     <Typography
                         variant="h6"
-                        className="mb-8"
                         sx={{
-                            color: 'rgba(255, 255, 255, 0.9)',
+                            color: 'rgba(255, 255, 255, 0.7)',
                             fontWeight: 400,
-                            maxWidth: '600px',
-                            margin: '0 auto 2rem',
+                            maxWidth: '700px',
+                            margin: '0 auto 3rem',
+                            lineHeight: 1.8,
+                            fontSize: '1.1rem',
                         }}
                     >
-                        Compress, merge, split, convert, and more - all for free
+                        Transform, optimize, and manipulate your PDF documents with cutting-edge tools designed for professionals
                     </Typography>
 
+                    {/* Search Bar */}
                     <Paper
                         elevation={0}
                         sx={{
                             maxWidth: 600,
                             margin: '0 auto',
-                            background: 'rgba(255, 255, 255, 0.95)',
+                            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02))',
                             backdropFilter: 'blur(20px)',
-                            borderRadius: 4,
-                            border: '1px solid rgba(255, 255, 255, 0.3)',
-                            boxShadow: '0 8px 32px rgba(31, 38, 135, 0.2)',
+                            borderRadius: '16px',
+                            border: '1px solid rgba(0, 240, 255, 0.2)',
+                            overflow: 'hidden',
+                            transition: 'all 0.3s ease',
+                            '&:hover': {
+                                borderColor: '#00f0ff',
+                                boxShadow: '0 0 30px rgba(0, 240, 255, 0.3)',
+                            },
                         }}
                     >
                         <TextField
@@ -145,18 +153,24 @@ const Home = () => {
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
-                                        <Search sx={{ color: '#667eea' }} />
+                                        <Search sx={{ color: '#00f0ff', fontSize: '1.5rem' }} />
                                     </InputAdornment>
                                 ),
                                 sx: {
                                     '& fieldset': { border: 'none' },
                                     fontSize: '1.1rem',
+                                    color: '#fff',
+                                    fontFamily: '"Inter", sans-serif',
+                                    '& input::placeholder': {
+                                        color: 'rgba(255, 255, 255, 0.5)',
+                                    },
                                 },
                             }}
                         />
                     </Paper>
                 </Box>
 
+                {/* Tools Grid */}
                 <Grid container spacing={4}>
                     {filteredTools.map((tool, index) => (
                         <Grid
@@ -166,7 +180,7 @@ const Home = () => {
                             md={4}
                             key={index}
                             sx={{
-                                animation: `fadeIn 0.6s ease-out ${index * 0.1}s both`,
+                                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
                             }}
                         >
                             <ToolCard {...tool} />
@@ -174,12 +188,14 @@ const Home = () => {
                     ))}
                 </Grid>
 
+                {/* No Results */}
                 {filteredTools.length === 0 && (
                     <Box className="text-center py-20">
                         <Typography
                             variant="h5"
                             sx={{
-                                color: 'white',
+                                color: 'rgba(255, 255, 255, 0.5)',
+                                fontFamily: '"Orbitron", sans-serif',
                                 fontWeight: 600,
                             }}
                         >
@@ -187,6 +203,36 @@ const Home = () => {
                         </Typography>
                     </Box>
                 )}
+
+                {/* Decorative Elements */}
+                <Box
+                    sx={{
+                        position: 'fixed',
+                        top: '20%',
+                        right: '-100px',
+                        width: '300px',
+                        height: '300px',
+                        borderRadius: '50%',
+                        background: 'radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%)',
+                        filter: 'blur(60px)',
+                        pointerEvents: 'none',
+                        zIndex: 0,
+                    }}
+                />
+                <Box
+                    sx={{
+                        position: 'fixed',
+                        bottom: '10%',
+                        left: '-100px',
+                        width: '400px',
+                        height: '400px',
+                        borderRadius: '50%',
+                        background: 'radial-gradient(circle, rgba(184, 41, 255, 0.1) 0%, transparent 70%)',
+                        filter: 'blur(80px)',
+                        pointerEvents: 'none',
+                        zIndex: 0,
+                    }}
+                />
             </Container>
         </Box>
     );
