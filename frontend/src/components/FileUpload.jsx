@@ -21,64 +21,37 @@ const FileUpload = ({ onFilesSelected, accept, multiple = false, maxSize = 50 * 
             elevation={0}
             className={`upload-zone scale-in ${isDragActive ? 'active' : ''}`}
             sx={{
-                position: 'relative',
-                background: isDragActive
-                    ? 'linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(184, 41, 255, 0.1) 100%)'
-                    : 'linear-gradient(135deg, rgba(0, 240, 255, 0.05) 0%, rgba(184, 41, 255, 0.05) 100%)',
-                border: `2px dashed ${isDragActive ? '#00f0ff' : 'rgba(0, 240, 255, 0.3)'}`,
-                borderRadius: '20px',
-                padding: '60px 40px',
                 cursor: 'pointer',
-                transition: 'all 0.4s ease',
-                backdropFilter: 'blur(10px)',
-                '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    inset: '-2px',
-                    background: 'linear-gradient(45deg, #00f0ff, #b829ff)',
-                    borderRadius: '20px',
-                    opacity: isDragActive ? 0.3 : 0,
-                    zIndex: -1,
-                    transition: 'opacity 0.3s',
-                },
-                '&:hover': {
-                    borderColor: '#00f0ff',
-                    background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(184, 41, 255, 0.1) 100%)',
-                    boxShadow: '0 0 40px rgba(0, 240, 255, 0.2)',
-                },
+                position: 'relative',
+                overflow: 'hidden',
             }}
         >
             <input {...getInputProps()} />
-            <Box className="text-center">
+            <Box className="text-center relative z-10">
                 {/* Upload Icon */}
                 <Box
-                    className={isDragActive ? 'float' : ''}
                     sx={{
-                        width: 100,
-                        height: 100,
-                        borderRadius: '20px',
+                        width: 80,
+                        height: 80,
+                        borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         margin: '0 auto 2rem',
-                        background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(184, 41, 255, 0.2))',
-                        border: '2px solid rgba(0, 240, 255, 0.3)',
-                        position: 'relative',
+                        background: isDragActive
+                            ? 'rgba(0, 217, 255, 0.2)'
+                            : 'rgba(255, 255, 255, 0.05)',
+                        border: `2px solid ${isDragActive ? '#00d9ff' : 'rgba(255, 255, 255, 0.1)'}`,
                         transition: 'all 0.3s ease',
-                        '&::before': {
-                            content: '""',
-                            position: 'absolute',
-                            inset: '-6px',
-                            background: 'linear-gradient(45deg, #00f0ff, #b829ff)',
-                            borderRadius: '22px',
-                            opacity: isDragActive ? 0.5 : 0,
-                            zIndex: -1,
-                            filter: 'blur(15px)',
-                            transition: 'opacity 0.3s',
-                        },
                     }}
                 >
-                    <CloudUpload sx={{ fontSize: 50, color: '#00f0ff' }} />
+                    <CloudUpload
+                        sx={{
+                            fontSize: 40,
+                            color: isDragActive ? '#00d9ff' : '#9ca3af',
+                            transition: 'all 0.3s ease',
+                        }}
+                    />
                 </Box>
 
                 {/* Text Content */}
@@ -86,39 +59,35 @@ const FileUpload = ({ onFilesSelected, accept, multiple = false, maxSize = 50 * 
                     <Typography
                         variant="h5"
                         sx={{
-                            color: '#00f0ff',
-                            fontFamily: '"Orbitron", sans-serif',
+                            color: '#00d9ff',
+                            fontFamily: '"Space Grotesk", sans-serif',
                             fontWeight: 700,
-                            letterSpacing: '2px',
-                            textShadow: '0 0 20px rgba(0, 240, 255, 0.5)',
+                            letterSpacing: '1px',
                         }}
                     >
-                        DROP FILES HERE
+                        DROP FILES NOW
                     </Typography>
                 ) : (
                     <>
                         <Typography
-                            variant="h6"
-                            className="mb-3"
+                            variant="h5"
                             sx={{
-                                fontFamily: '"Orbitron", sans-serif',
+                                fontFamily: '"Space Grotesk", sans-serif',
                                 fontWeight: 600,
-                                color: '#fff',
-                                letterSpacing: '1px',
-                                mb: 2,
+                                color: '#ffffff',
+                                mb: 1,
                             }}
                         >
-                            DRAG & DROP FILES
+                            Click to upload or drag and drop
                         </Typography>
                         <Typography
-                            variant="body2"
+                            variant="body1"
                             sx={{
-                                color: 'rgba(255, 255, 255, 0.6)',
-                                mb: 3,
-                                fontSize: '0.95rem',
+                                color: '#9ca3af',
+                                mb: 4,
                             }}
                         >
-                            or click to browse
+                            {multiple ? 'Upload multiple PDF files' : 'Upload a PDF file'}
                         </Typography>
 
                         {/* Info Badge */}
@@ -127,25 +96,23 @@ const FileUpload = ({ onFilesSelected, accept, multiple = false, maxSize = 50 * 
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 gap: 2,
-                                px: 4,
-                                py: 1.5,
+                                px: 3,
+                                py: 1,
                                 borderRadius: '50px',
-                                background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(184, 41, 255, 0.1))',
-                                border: '1px solid rgba(0, 240, 255, 0.2)',
-                                mt: 2,
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                border: '1px solid rgba(255, 255, 255, 0.1)',
                             }}
                         >
                             <Typography
                                 variant="caption"
                                 sx={{
-                                    color: '#00f0ff',
-                                    fontFamily: '"Orbitron", sans-serif',
-                                    fontWeight: 600,
-                                    fontSize: '0.75rem',
-                                    letterSpacing: '1px',
+                                    color: '#d7d7d7',
+                                    fontFamily: '"Inter", sans-serif',
+                                    fontWeight: 500,
+                                    fontSize: '0.8rem',
                                 }}
                             >
-                                {multiple ? 'MULTIPLE FILES' : 'SINGLE FILE'} • MAX {Math.round(maxSize / 1024 / 1024)}MB
+                                MAX SIZE: {Math.round(maxSize / 1024 / 1024)}MB
                             </Typography>
                         </Box>
                     </>
@@ -155,15 +122,18 @@ const FileUpload = ({ onFilesSelected, accept, multiple = false, maxSize = 50 * 
                 {fileRejections.length > 0 && (
                     <Typography
                         variant="body2"
-                        className="mt-4"
                         sx={{
-                            color: '#ff006e',
+                            color: '#ef4444',
                             fontWeight: 600,
-                            fontSize: '0.9rem',
                             mt: 3,
+                            background: 'rgba(239, 68, 68, 0.1)',
+                            py: 1,
+                            px: 2,
+                            borderRadius: '8px',
+                            display: 'inline-block',
                         }}
                     >
-                        ⚠️ FILE REJECTED - CHECK TYPE & SIZE
+                        ⚠️ Invalid file type or size exceeded
                     </Typography>
                 )}
             </Box>

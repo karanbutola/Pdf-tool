@@ -11,54 +11,54 @@ const theme = createTheme({
     palette: {
         mode: 'dark',
         primary: {
-            main: '#00f0ff',
-            light: '#66f3ff',
-            dark: '#00a6b3',
+            main: '#00d9ff',
+            light: '#60e6ff',
+            dark: '#009bb3',
         },
         secondary: {
-            main: '#b829ff',
-            light: '#d066ff',
-            dark: '#8000b3',
+            main: '#a855f7',
+            light: '#c084fc',
+            dark: '#7e22ce',
         },
         background: {
-            default: '#0a0e27',
-            paper: 'rgba(255, 255, 255, 0.05)',
+            default: '#0a0a0f',
+            paper: '#111118',
         },
         text: {
             primary: '#ffffff',
-            secondary: 'rgba(255, 255, 255, 0.7)',
+            secondary: '#d7d7d7',
         },
     },
     typography: {
-        fontFamily: '"Inter", "Roboto", sans-serif',
+        fontFamily: '"Inter", sans-serif',
         h1: {
-            fontFamily: '"Orbitron", sans-serif',
-            fontWeight: 900,
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontWeight: 700,
         },
         h2: {
-            fontFamily: '"Orbitron", sans-serif',
-            fontWeight: 800,
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontWeight: 700,
         },
         h3: {
-            fontFamily: '"Orbitron", sans-serif',
+            fontFamily: '"Space Grotesk", sans-serif',
             fontWeight: 700,
         },
         h4: {
-            fontFamily: '"Orbitron", sans-serif',
+            fontFamily: '"Space Grotesk", sans-serif',
             fontWeight: 700,
         },
         h5: {
-            fontFamily: '"Orbitron", sans-serif',
+            fontFamily: '"Space Grotesk", sans-serif',
             fontWeight: 600,
         },
         h6: {
-            fontFamily: '"Orbitron", sans-serif',
+            fontFamily: '"Space Grotesk", sans-serif',
             fontWeight: 600,
         },
         button: {
-            fontFamily: '"Orbitron", sans-serif',
-            fontWeight: 700,
-            letterSpacing: '1px',
+            fontFamily: '"Space Grotesk", sans-serif',
+            fontWeight: 600,
+            letterSpacing: '0.5px',
         },
     },
     shape: {
@@ -68,19 +68,19 @@ const theme = createTheme({
         MuiCssBaseline: {
             styleOverrides: {
                 body: {
-                    scrollbarColor: '#00f0ff #0f1629',
+                    scrollbarColor: '#374151 #111118',
                     '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
-                        width: 12,
-                        height: 12,
+                        width: 10,
+                        height: 10,
                     },
                     '&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
                         borderRadius: 10,
-                        background: 'linear-gradient(180deg, #00f0ff, #b829ff)',
-                        border: '2px solid #0f1629',
+                        background: '#374151',
+                        border: '2px solid #111118',
                     },
                     '&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track': {
                         borderRadius: 10,
-                        background: '#0f1629',
+                        background: '#111118',
                     },
                 },
             },
@@ -99,26 +99,25 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     toastOptions={{
                         duration: 3000,
                         style: {
-                            background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.9) 0%, rgba(184, 41, 255, 0.9) 100%)',
+                            background: '#1f2937',
                             color: '#fff',
                             borderRadius: '12px',
                             padding: '16px',
                             fontSize: '14px',
-                            fontWeight: 600,
-                            fontFamily: '"Orbitron", sans-serif',
-                            border: '1px solid rgba(0, 240, 255, 0.3)',
-                            boxShadow: '0 8px 32px rgba(0, 240, 255, 0.4)',
+                            fontWeight: 500,
+                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
                         },
                         success: {
-                            duration: 3000,
-                            style: {
-                                background: 'linear-gradient(135deg, rgba(0, 240, 255, 0.9), rgba(0, 200, 150, 0.9))',
+                            iconTheme: {
+                                primary: '#00d9ff',
+                                secondary: '#fff',
                             },
                         },
                         error: {
-                            duration: 4000,
-                            style: {
-                                background: 'linear-gradient(135deg, rgba(255, 0, 110, 0.9), rgba(255, 100, 100, 0.9))',
+                            iconTheme: {
+                                primary: '#ef4444',
+                                secondary: '#fff',
                             },
                         },
                     }}
