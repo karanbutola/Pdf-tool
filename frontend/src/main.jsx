@@ -11,55 +11,29 @@ const theme = createTheme({
     palette: {
         mode: 'dark',
         primary: {
-            main: '#00d9ff',
-            light: '#60e6ff',
-            dark: '#009bb3',
+            main: '#3b82f6', // Electric Blue
         },
         secondary: {
-            main: '#a855f7',
-            light: '#c084fc',
-            dark: '#7e22ce',
+            main: '#8b5cf6', // Violet
         },
         background: {
-            default: '#0a0a0f',
-            paper: '#111118',
+            default: '#020617', // Deep Space Blue (matches CSS)
+            paper: '#0f172a',   // Dark Slate
         },
         text: {
             primary: '#ffffff',
-            secondary: '#d7d7d7',
+            secondary: '#94a3b8',
         },
     },
     typography: {
-        fontFamily: '"Inter", sans-serif',
-        h1: {
-            fontFamily: '"Space Grotesk", sans-serif',
-            fontWeight: 700,
-        },
-        h2: {
-            fontFamily: '"Space Grotesk", sans-serif',
-            fontWeight: 700,
-        },
-        h3: {
-            fontFamily: '"Space Grotesk", sans-serif',
-            fontWeight: 700,
-        },
-        h4: {
-            fontFamily: '"Space Grotesk", sans-serif',
-            fontWeight: 700,
-        },
-        h5: {
-            fontFamily: '"Space Grotesk", sans-serif',
-            fontWeight: 600,
-        },
-        h6: {
-            fontFamily: '"Space Grotesk", sans-serif',
-            fontWeight: 600,
-        },
-        button: {
-            fontFamily: '"Space Grotesk", sans-serif',
-            fontWeight: 600,
-            letterSpacing: '0.5px',
-        },
+        fontFamily: '"Outfit", "Inter", sans-serif',
+        h1: { fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700 },
+        h2: { fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700 },
+        h3: { fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700 },
+        h4: { fontFamily: '"Space Grotesk", sans-serif', fontWeight: 700 },
+        h5: { fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600 },
+        h6: { fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600 },
+        button: { fontFamily: '"Space Grotesk", sans-serif', fontWeight: 600, textTransform: 'none' },
     },
     shape: {
         borderRadius: 16,
@@ -68,20 +42,17 @@ const theme = createTheme({
         MuiCssBaseline: {
             styleOverrides: {
                 body: {
-                    scrollbarColor: '#374151 #111118',
-                    '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
-                        width: 10,
-                        height: 10,
-                    },
-                    '&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
-                        borderRadius: 10,
-                        background: '#374151',
-                        border: '2px solid #111118',
-                    },
-                    '&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track': {
-                        borderRadius: 10,
-                        background: '#111118',
-                    },
+                    backgroundColor: '#020617',
+                    backgroundImage: 'none', // Let CSS handle the gradients
+                },
+            },
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    borderRadius: '12px',
+                    padding: '10px 24px',
+                    fontSize: '1rem',
                 },
             },
         },
@@ -97,28 +68,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Toaster
                     position="top-right"
                     toastOptions={{
-                        duration: 3000,
                         style: {
-                            background: '#1f2937',
+                            background: '#1e293b',
                             color: '#fff',
-                            borderRadius: '12px',
-                            padding: '16px',
-                            fontSize: '14px',
-                            fontWeight: 500,
-                            border: '1px solid rgba(255, 255, 255, 0.1)',
-                            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
-                        },
-                        success: {
-                            iconTheme: {
-                                primary: '#00d9ff',
-                                secondary: '#fff',
-                            },
-                        },
-                        error: {
-                            iconTheme: {
-                                primary: '#ef4444',
-                                secondary: '#fff',
-                            },
+                            border: '1px solid rgba(255,255,255,0.1)',
                         },
                     }}
                 />

@@ -4,8 +4,7 @@ import Home from './pages/Home';
 import History from './pages/History';
 import Profile from './pages/Profile';
 
-// PDF Tool Pages
-import CompressPDF from './pages/tools/CompressPDF';
+// PDF Tool Pages (compression removed)
 import MergePDF from './pages/tools/MergePDF';
 import ImageToPDF from './pages/tools/ImageToPDF';
 import PDFToImage from './pages/tools/PDFToImage';
@@ -15,15 +14,13 @@ import SplitPDF from './pages/tools/SplitPDF';
 
 function App() {
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen">
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/history" element={<History />} />
                 <Route path="/profile" element={<Profile />} />
-
                 {/* PDF Tool Routes */}
-                <Route path="/tools/compress" element={<CompressPDF />} />
                 <Route path="/tools/merge" element={<MergePDF />} />
                 <Route path="/tools/image-to-pdf" element={<ImageToPDF />} />
                 <Route path="/tools/pdf-to-image" element={<PDFToImage />} />

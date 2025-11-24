@@ -8,6 +8,8 @@ import archiver from 'archiver';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Compression feature removed
+
 // Helper to delete files
 const deleteFile = (filePath) => {
     try {
@@ -22,6 +24,8 @@ const deleteFile = (filePath) => {
 const deleteFiles = (filePaths) => {
     filePaths.forEach(deleteFile);
 };
+
+// Compression feature removed - handler deleted
 
 // @desc    Merge PDFs
 // @route   POST /api/pdf/merge
