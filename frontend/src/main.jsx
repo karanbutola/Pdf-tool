@@ -5,7 +5,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Toaster } from 'react-hot-toast';
 import App from './App';
-import { AuthProvider } from './context/AuthContext';
 import './index.css';
 
 const theme = createTheme({
@@ -127,36 +126,34 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <BrowserRouter>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <AuthProvider>
-                    <App />
-                    <Toaster
-                        position="top-right"
-                        toastOptions={{
+                <App />
+                <Toaster
+                    position="top-right"
+                    toastOptions={{
+                        duration: 3000,
+                        style: {
+                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                            color: '#fff',
+                            borderRadius: '12px',
+                            padding: '16px',
+                            fontSize: '14px',
+                            fontWeight: 500,
+                            boxShadow: '0 8px 24px rgba(102, 126, 234, 0.4)',
+                        },
+                        success: {
                             duration: 3000,
                             style: {
-                                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                                color: '#fff',
-                                borderRadius: '12px',
-                                padding: '16px',
-                                fontSize: '14px',
-                                fontWeight: 500,
-                                boxShadow: '0 8px 24px rgba(102, 126, 234, 0.4)',
+                                background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
                             },
-                            success: {
-                                duration: 3000,
-                                style: {
-                                    background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-                                },
+                        },
+                        error: {
+                            duration: 4000,
+                            style: {
+                                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
                             },
-                            error: {
-                                duration: 4000,
-                                style: {
-                                    background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                                },
-                            },
-                        }}
-                    />
-                </AuthProvider>
+                        },
+                    }}
+                />
             </ThemeProvider>
         </BrowserRouter>
     </React.StrictMode>

@@ -1,5 +1,4 @@
 import express from 'express';
-import { protect } from '../middleware/auth.js';
 import { uploadSingle, uploadMultiple } from '../middleware/upload.js';
 import {
     compressPDF,
@@ -21,10 +20,7 @@ import {
 
 const router = express.Router();
 
-// All routes are protected - require authentication
-router.use(protect);
-
-// PDF Operations Routes
+// PDF Operations Routes - No authentication required
 router.post('/compress', uploadSingle, compressPDF);
 router.post('/merge', uploadMultiple, mergePDFs);
 router.post('/image-to-pdf', uploadMultiple, imageToPDF);

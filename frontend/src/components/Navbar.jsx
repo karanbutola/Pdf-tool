@@ -1,28 +1,7 @@
-import { AppBar, Toolbar, Typography, Button, IconButton, Menu, MenuItem, Box, Avatar } from '@mui/material';
-import { AccountCircle, Logout, Person } from '@mui/icons-material';
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    const { user, isAuthenticated, logout } = useAuth();
-    const navigate = useNavigate();
-    const [anchorEl, setAnchorEl] = useState(null);
-
-    const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const handleLogout = () => {
-        logout();
-        handleClose();
-        navigate('/login');
-    };
-
     return (
         <AppBar
             position="sticky"
@@ -61,124 +40,21 @@ const Navbar = () => {
                     </Typography>
                 </Box>
 
-                {isAuthenticated ? (
-                    <Box className="flex items-center gap-2">
-                        <Button
-                            color="inherit"
-                            component={Link}
-                            to="/"
-                            className="hidden md:inline-flex"
-                            sx={{
-                                color: 'white',
-                                '&:hover': {
-                                    background: 'rgba(255, 255, 255, 0.1)',
-                                },
-                            }}
-                        >
-                            Tools
-                        </Button>
-                        <Button
-                            color="inherit"
-                            component={Link}
-                            to="/history"
-                            className="hidden md:inline-flex"
-                            sx={{
-                                color: 'white',
-                                '&:hover': {
-                                    background: 'rgba(255, 255, 255, 0.1)',
-                                },
-                            }}
-                        >
-                            History
-                        </Button>
-
-                        <IconButton
-                            size="large"
-                            onClick={handleMenu}
-                            sx={{
-                                background: 'rgba(255, 255, 255, 0.15)',
-                                '&:hover': {
-                                    background: 'rgba(255, 255, 255, 0.25)',
-                                },
-                            }}
-                        >
-                            <Avatar
-                                sx={{
-                                    width: 32,
-                                    height: 32,
-                                    background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                                    fontSize: '1rem',
-                                    fontWeight: 600,
-                                }}
-                            >
-                                {user?.name?.charAt(0).toUpperCase()}
-                            </Avatar>
-                        </IconButton>
-                        <Menu
-                            anchorEl={anchorEl}
-                            open={Boolean(anchorEl)}
-                            onClose={handleClose}
-                            PaperProps={{
-                                sx: {
-                                    mt: 1.5,
-                                    borderRadius: 3,
-                                    minWidth: 200,
-                                    boxShadow: '0 8px 32px rgba(31, 38, 135, 0.2)',
-                                },
-                            }}
-                        >
-                            <MenuItem disabled sx={{ opacity: 1 }}>
-                                <Box>
-                                    <Typography variant="body2" className="font-bold">
-                                        {user?.name}
-                                    </Typography>
-                                    <Typography variant="caption" color="text.secondary">
-                                        {user?.email}
-                                    </Typography>
-                                </Box>
-                            </MenuItem>
-                            <MenuItem onClick={() => { navigate('/profile'); handleClose(); }}>
-                                <Person fontSize="small" className="mr-2" />
-                                Profile
-                            </MenuItem>
-                            <MenuItem onClick={handleLogout}>
-                                <Logout fontSize="small" className="mr-2" />
-                                Logout
-                            </MenuItem>
-                        </Menu>
-                    </Box>
-                ) : (
-                    <Box className="flex gap-2">
-                        <Button
-                            color="inherit"
-                            component={Link}
-                            to="/login"
-                            sx={{
-                                color: 'white',
-                                '&:hover': {
-                                    background: 'rgba(255, 255, 255, 0.1)',
-                                },
-                            }}
-                        >
-                            Login
-                        </Button>
-                        <Button
-                            variant="contained"
-                            component={Link}
-                            to="/register"
-                            sx={{
-                                background: 'white',
-                                color: '#667eea',
-                                '&:hover': {
-                                    background: 'rgba(255, 255, 255, 0.9)',
-                                    transform: 'translateY(-2px)',
-                                },
-                            }}
-                        >
-                            Register
-                        </Button>
-                    </Box>
-                )}
+                <Box className="flex items-center gap-2">
+                    <Button
+                        color="inherit"
+                        component={Link}
+                        to="/"
+                        sx={{
+                            color: 'white',
+                            '&:hover': {
+                                background: 'rgba(255, 255, 255, 0.1)',
+                            },
+                        }}
+                    >
+                        Tools
+                    </Button>
+                </Box>
             </Toolbar>
         </AppBar>
     );
