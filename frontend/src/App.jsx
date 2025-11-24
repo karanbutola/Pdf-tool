@@ -12,9 +12,11 @@ import RotatePDF from './pages/tools/RotatePDF';
 import ExtractPages from './pages/tools/ExtractPages';
 import SplitPDF from './pages/tools/SplitPDF';
 
+import Footer from './components/Footer';
+
 function App() {
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen flex flex-col">
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -28,6 +30,7 @@ function App() {
                 <Route path="/tools/extract" element={<ExtractPages />} />
                 <Route path="/tools/split" element={<SplitPDF />} />
             </Routes>
+            <Footer />
         </div>
     );
 }
