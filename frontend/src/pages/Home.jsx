@@ -2,6 +2,7 @@ import { Container, Typography, Grid, TextField, Box, InputAdornment } from '@mu
 import { Search } from '@mui/icons-material';
 import { useState } from 'react';
 import ToolCard from '../components/ToolCard';
+import { InFeedAd } from '../components/AdSense';
 
 const Home = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -85,16 +86,24 @@ const Home = () => {
                 {/* Tools Grid */}
                 <Grid container spacing={4}>
                     {filteredTools.map((tool, index) => (
-                        <Grid
-                            item
-                            xs={12}
-                            sm={6}
-                            md={4}
-                            key={index}
-                            sx={{ animation: `fadeInUp 0.5s ease-out ${index * 0.1}s both` }}
-                        >
-                            <ToolCard {...tool} />
-                        </Grid>
+                        <>
+                            <Grid
+                                item
+                                xs={12}
+                                sm={6}
+                                md={4}
+                                key={index}
+                                sx={{ animation: `fadeInUp 0.5s ease-out ${index * 0.1}s both` }}
+                            >
+                                <ToolCard {...tool} />
+                            </Grid>
+                            {/* In-feed ads after 3rd and 6th tool cards */}
+                            {(index === 2 || index === 5) && filteredTools.length > index + 1 && (
+                                <Grid item xs={12} sm={6} md={4} key={`ad-${index}`}>
+                                    <InFeedAd slot={index === 2 ? "1234567896" : "1234567897"} />
+                                </Grid>
+                            )}
+                        </>
                     ))}
                 </Grid>
                 {/* No Results */}
