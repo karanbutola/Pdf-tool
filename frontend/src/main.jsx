@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Toaster } from 'react-hot-toast';
@@ -61,21 +62,23 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <BrowserRouter>
-            <ThemeProvider theme={theme}>
-                <CssBaseline />
-                <App />
-                <Toaster
-                    position="top-right"
-                    toastOptions={{
-                        style: {
-                            background: '#1e293b',
-                            color: '#fff',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                        },
-                    }}
-                />
-            </ThemeProvider>
-        </BrowserRouter>
+        <HelmetProvider>
+            <BrowserRouter>
+                <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <App />
+                    <Toaster
+                        position="top-right"
+                        toastOptions={{
+                            style: {
+                                background: '#1e293b',
+                                color: '#fff',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                            },
+                        }}
+                    />
+                </ThemeProvider>
+            </BrowserRouter>
+        </HelmetProvider>
     </React.StrictMode>
 );
