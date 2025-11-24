@@ -1,5 +1,4 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -8,9 +7,6 @@ import fs from 'fs';
 
 // Import routes
 import pdfRoutes from './routes/pdf.js';
-
-// Import utilities
-import { startCleanupScheduler } from './utils/fileCleanup.js';
 
 // ES Module dirname fix
 const __filename = fileURLToPath(import.meta.url);
@@ -53,16 +49,13 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start server (MongoDB connection optional now)
-const PORT = process.env.PORT || 5000;
+// Start server
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📁 Environment: ${process.env.NODE_ENV}`);
-
-  // Start file cleanup scheduler
-  startCleanupScheduler();
-  console.log('🧹 File cleanup scheduler started');
+  console.log(`📁 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`✅ Backend ready for PDF operations`);
 });
 
 export default app;

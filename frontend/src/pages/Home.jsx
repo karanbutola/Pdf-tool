@@ -8,12 +8,6 @@ const Home = () => {
 
     const tools = [
         {
-            title: 'Compress',
-            description: 'Reduce file size while maintaining quality with advanced compression',
-            icon: '🗜️',
-            path: '/tools/compress',
-        },
-        {
             title: 'Merge',
             description: 'Combine multiple PDFs into a single unified document',
             icon: '🔗',
